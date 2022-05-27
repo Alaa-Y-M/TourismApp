@@ -1,0 +1,60 @@
+﻿@model GradProj.ViewModels.BookingViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h3> Edit Booking Room</h3>
+    @if (ViewBag.mssg != null)
+    {
+        <h3 class="alert alert-danger mb-3 mt-3">@ViewBag.mssg</h3>
+    }
+    @if (ViewBag.message != null)
+    {
+        <h3 class="alert alert-danger mt-3 mb-3">@ViewBag.message</h3>
+    }
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input readonly asp-for="Id" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CheckIn" class="control-label"></label>
+                    <input asp-for="CheckIn" type="date" class="form-control" />
+                    <span asp-validation-for="CheckIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CheckOut" class="control-label"></label>
+                    <input asp-for="CheckOut" type="date" class="form-control" />
+                    <span asp-validation-for="CheckOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rooms" class="control-label"></label>
+                    <select asp-for="RoomId" asp-items="@(new SelectList(Model.Rooms,"Id","RoomNumber"))" class="form-control"></select>
+                    <span asp-validation-for="Rooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="People" class="control-label"></label>
+                    <input asp-for="People" type="number" class="form-control" />
+                    <span asp-validation-for="People" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

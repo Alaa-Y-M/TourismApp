@@ -1,0 +1,7 @@
+/wwwroot
+*.config
+.vscode
+**/wwwroot
+**/wwwroot/lib
+/obj
+/bin

@@ -1,0 +1,78 @@
+﻿@model GradProj.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+    <div class="container">
+
+        <h2 class="text-secondary mt-5">Edit <strong class="text-warning">@(Model.UserName??"")</strong></h2>
+        <hr />
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Id" class="control-label"></label>
+                        <input readonly asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="EmailConfirmed" /> @Html.DisplayNameFor(model => model.EmailConfirmed)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="File" class="control-label"></label>
+                        <input asp-for="File" name="File" accept=".png,.jpeg,.jpg,.gif,.bmb" type="file" onchange="FillImage(event)" class="form-control form-control-file" />
+                        <span asp-validation-for="File" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        @if (Model.ImgUrl != null)
+                        {
+                            <img id="image" src=@Url.Content("~/uploads/users/"+Model.ImgUrl) class="img-thumbnail" style="width:120px" />
+                        }
+
+                    </div>
+                    <input asp-for="ImgUrl" hidden value="@Model.ImgUrl" class="form-control" />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+        <div>
+            <a asp-action="home" asp-controller="Admin">Back to Admin List</a>
+        </div>
+    </div>
+    <script>
+        var FillImage = function (event) {
+            var img = document.getElementById("image");
+            img.src = URL.createObjectURL(event.target.files[0])
+        }
+    </script>

@@ -1,0 +1,346 @@
+﻿@model GradProj.Models.Place
+
+@{
+    ViewData["Title"] = "Discover Distnaition";
+}
+
+    <style>
+    .align-self-stretch {
+        -ms-flex-item-align: stretch !important;
+            
+        align-self: stretch !important;
+    }
+
+        .ftco-animate {
+  opacity: 0;
+  visibility: hidden; }
+
+.bg-primary {
+  background: #e2c0bb !important; }
+
+.about-author .desc h3 {
+  font-size: 24px; }
+
+.ftco-section {
+  padding: 7em 0;
+  position: relative; }
+  @@media (max-width: 767.98px) {
+    .ftco-section {
+      padding: 6em 0; } }
+    .tour-wrap {
+  overflow-x: scroll; }
+
+.tour-wrap .img {
+  display: block;
+  width: 100%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+  @@media (max-width: 767.98px) {
+    .tour-wrap .img {
+      height: 300px; } }
+
+.tour-wrap .text h3 a {
+  color: #000000; }
+
+.tour-wrap .text .pos {
+  color: #000000; }
+  .tour-wrap .text .pos span {
+    color: #e2c0bb; }
+
+.day-wrap {
+  width: 100%;
+  margin-bottom: 50px; }
+  .day-wrap h3 {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative; }
+    .day-wrap h3:after {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: #000000;
+      content: ''; }
+
+.table {
+  min-width: 1000px !important;
+  width: 100%;
+  text-align: center; }
+  .table th {
+    font-weight: 500; }
+  .table .thead-primary {
+    background: black; }
+    .table .thead-primary tr th {
+      padding: 20px 10px;
+      color: #fff !important;
+      border: 1px solid transparent !important; }
+  .table tbody tr th {
+    border: 1px solid transparent !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    color: #000000; }
+  .table tbody tr th, .table tbody tr td {
+    text-align: left !important;
+    vertical-align: middle;
+    padding: 20px 0;
+    border: 1px solid transparent !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; }
+    .table tbody tr th ul, .table tbody tr td ul {
+      width: 100%; }
+
+.rate span i {
+  color: #e2c0bb; }
+
+.ftco-intro {
+  padding: 8em 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  background: #e2c0bb; }
+  .ftco-intro .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    opacity: .2;
+    background: #000000; }
+  @@media (max-width: 991.98px) {
+    .ftco-intro {
+      background-position: center center !important; } }
+  .ftco-intro h2 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 800; }
+
+.room-wrap .img {
+  display: block;
+  width: 100%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+  @@media (max-width: 767.98px) {
+    .room-wrap .img {
+      height: 300px; } }
+    </style>
+<div class="hero-wrap js-fullheight" style="background-image: url('/uploads/destination/@Model.ImgUrl');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">@Model.Name</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section">
+    <div class="container" style="margin-top: -30px; margin-bottom: -100px">
+        <div class="row">
+            <div class="col-lg-3 sidebar order-md-last ftco-animate">
+                <div class="sidebar-wrap ftco-animate">
+                    <h3 class="heading mb-4">Find Distination</h3>
+                    <form asp-action="search" asp-controller="place">
+                        <div class="fields">
+                            <div class="form-group">
+                                <input type="text" name="term" class="form-control" placeholder="Destination, City">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="form-control btn btn-primary py-3 px-5" value="Search" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div><!-- END-->
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-sm col-md-6 col-lg-10 ftco-animate">
+                        <div class="destination">
+                            <h3 class="text-secondary text-center">@Model.Name</h3>
+                            <h4 class="text-black d-inline">Details:</h4>
+                            <p class="lead text-center">@Model.Details</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .col-md-8 -->
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-services-2 ftco-no-pt">
+    <div class="container-fluid px-0 bg-light">
+        <div class="container">
+            <div class="row tour py-5">
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-compass"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">5 Days</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-yatch"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">Age 12+</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-resort"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">April, May, June</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-around"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">Availability 30</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services text-center d-block">
+                        <div class="icon justify-content-center align-items-center d-flex"><span class="flaticon-map-of-roads"></span></div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3"><span>$500</span> $400</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 tour-wrap mb-5">
+                <div class="row">
+                    <div class="col-md-6 d-flex ftco-animate">
+                        <div class="img align-self-stretch" style="background-image: url('/uploads/destination/@Model.ImgUrl');"></div>
+                    </div>
+                    <div class="col-md-6 ftco-animate">
+                        <div class="text py-5">
+                            <h3><a href="#">Discover Greece</a></h3>
+                            <p class="pos">from <span class="price">$400.00</span>5 days</p>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                            <p><a href="#" class="btn btn-secondary">Details</a> <a href="#" class="btn btn-primary">Book now</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12 tour-wrap">
+                <h2 class="text-center text-secondary">Pogram To Tour</h2>
+                <div class="day-wrap">
+                    <h3 class="pl-5">Day 1</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                    <img src="~/uploads/destination/@Model.ImgUrl" class="img-fluid" alt="Colorlib Free Template">
+                </div>
+            </div>
+            <div class="col-md-12 tour-wrap">
+                <div class="day-wrap">
+                    <h3 class="pl-5">Day 2</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div>
+            </div>
+            <div class="col-md-12 tour-wrap">
+                <div class="day-wrap">
+                    <h3 class="pl-5">Day 3</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div>
+            </div>
+            <div class="col-md-12 tour-wrap">
+                <div class="day-wrap">
+                    <h3 class="pl-5">Day 4</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div>
+            </div>
+            <div class="col-md-12 tour-wrap">
+                <div class="day-wrap">
+                    <h3 class="pl-5">Day 5</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div>
+            </div>
+            <div class="col-md-12 tour-wrap">
+                <p><a href="#" class="btn btn-primary py-3 px-4">Book this tour</a> <a href="#" class="btn btn-secondary py-3 px-4">Share this tour</a></p>
+            </div>
+            <div class="col-md-12 tour-wrap">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Departure</th>
+                            <td>
+                                <p>@Model.City.Name</p>
+                            </td>
+                            <td></td>
+                        </tr><!-- END TR-->
+
+                        <tr>
+                            <th scope="row">Departure Time</th>
+                            <td>
+                                <p>Please arrive by 10:20 AM for a prompt departure at 10:50 AM</p>
+                            </td>
+                            <td></td>
+                        </tr><!-- END TR-->
+
+                        <tr>
+                            <th scope="row">Return Time</th>
+                            <td>
+                                <p>Approximately 8:30 PM</p>
+                            </td>
+                            <td></td>
+                        </tr><!-- END TR-->
+
+                        <tr>
+                            <th scope="row">Included</th>
+                            <td class="d-flex">
+                                <ul>
+                                    <li>Airfare</li>
+                                    <li>5 star accomodation</li>
+                                </ul>
+                                <ul>
+                                    <li>Local transportation</li>
+                                    <li>Private Professional Guide</li>
+                                </ul>
+                            </td>
+                            <td></td>
+                        </tr><!-- END TR-->
+
+                        <tr>
+                            <th scope="row">Not Included</th>
+                            <td class="d-flex">
+                                <ul>
+                                    <li>Departure Taxes</li>
+                                </ul>
+                                <ul>
+                                    <li>Entry Fees</li>
+                                </ul>
+                            </td>
+                            <td></td>
+                        </tr><!-- END TR-->
+                        <tr>
+                            <th scope="row">Maps</th>
+                            <td>
+                                <div style="width: 100%"><iframe  height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="@Model.MapUrl"></iframe><a href="https://www.maps.ie/map-my-route/">Measure walking route distance</a></div>
+                            </td>
+                        </tr><!-- END TR-->
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</section> <!-- .section -->
+
+

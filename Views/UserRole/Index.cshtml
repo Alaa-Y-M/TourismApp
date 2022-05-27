@@ -1,0 +1,43 @@
+﻿@model IEnumerable<IdentityUserRole<string>>
+@using Microsoft.AspNetCore.Identity;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="text-center mt-4 mb-3" style="background-color:lightgray">
+        <h2 class="lead p-3">Users Role Table</h2>
+    </div>
+    <p>
+        <a asp-action="Create" class="btn btn-outline-primary  mb-4">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoleId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

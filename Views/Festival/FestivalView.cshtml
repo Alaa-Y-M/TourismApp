@@ -1,0 +1,93 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<GradProj.Models.SiteModels.Festival>
+@{
+    ViewData["Title"] = "Festivals";
+}
+    <link href="~/css/site.css" rel="stylesheet">
+    <link href="~/LayoutResources/css/style.css" rel="stylesheet">
+<div class="hero-wrap js-fullheight" style="background-image:url('../LayoutResources/images/cover-img-3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a asp-action="index" asp-controller="home">Home</a></span> <span>Festivals</span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 } " style="color:#fdfdfd;font-size:66px">Festivals</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section justify-content-end ftco-search" style="margin-top: -122px;text-align: center;">
+    <div class="container-wrap ml-auto">
+        <div class="row no-gutters">
+            <div class="col-md-12 tab-wrap">
+
+                <div class="tab-content p-4 px-5" style="background: #3330;position: relative;margin-bottom: -70px;" id="v-pills-tabContent">
+
+                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                        <div class="sidebar-wrap ftco-animate" style="position: relative;bottom: 24px;">
+                            <h3 class="heading mb-2 mt-3" style="text-align:left;margin-left:50px;color:#FFF !important">Find Festival</h3>
+                            <form asp-action="search" asp-controller="festival">
+                                <div class="row">
+                                    <div class="col-lg-11 col-sm-8">
+                                        <input type="text" name="city" style="background:#eae2e236 !important;color:#FFF;border:1px solid #f9be37 !important" class="form-control" placeholder="Festival OR City">
+                                    </div>
+                                    <div class="col-lg-1 col-sm-4" style="position:relative;right: 126px;">
+                                        <button type="submit" class="form-control btn btn-primary py-3 px-5"
+                                                style="background: #fefefee6 !important;border: none !important">
+                                            <i class="fas fa-search-location fa-2x" style="position:relative;bottom:6px;right:11px;color:#333 !important"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <span class="subheading">Festival</span>
+                <h2 class="mb-4">Common Festivals</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+            <div class="col-md-6 col-lg-4 ftco-animate">
+                <div class="project">
+                    <div class="img">
+                        <img src="~/uploads/festival/@item.ImgUrl" class="img-fluid" style="height:402px" alt="Colorlib Template">
+                    </div>
+                    <div class="text">
+                        <h4 class="price"><span class="mr-2">menu start at</span></h4>
+                        <span>Egy, @item.City.Name</span><br/>
+                        <span  class="text-secondary">@item.Details</span>
+                        <h3><a href="project.html">@item.Name</a></h3>
+                        <div class="star d-flex clearfix">
+                            <div class="mr-auto float-left">
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star"></span>
+                            </div>
+                            <div class="float-right">
+                                <span class="rate"><a href=""></a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="~/uploads/festival/@item.ImgUrl" class="icon image-popup d-flex justify-content-center align-items-center">
+                        <span class="icon-expand"></span>
+                    </a>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

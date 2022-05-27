@@ -1,0 +1,59 @@
+﻿@model GradProj.Models.SiteModels.Room
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<div class="container">
+    <div class="mt-5 mb-2">
+        <h4>Hotel</h4>
+        <hr />
+        <div class="row">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.RoomNumber): </strong>
+                @Html.DisplayFor(i => i.RoomNumber)
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.Type): </strong>
+                @Html.DisplayFor(i => i.Type)
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.IsBusy): </strong>
+                @Html.DisplayFor(i => i.IsBusy)
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.Price): </strong>
+                @Html.DisplayFor(i => i.Price)
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.NumberOfBeds): </strong>
+                @Html.DisplayFor(i => i.NumberOfBeds)
+            </div>
+        </div>
+        <div>
+            <div class="row mt-5 mb-4">
+                <div class="col-4"></div>
+                <div class="col-8">
+                    @if (Model.ImgUrl != null)
+                    {
+                        <img src="~/uploads/room/@Model.ImgUrl" class="img-thumbnail" style="width:300px" />
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-success">Edit</a> |
+        <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<GradProj.Models.SiteModels.Post>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="p-4" style="background:#b6ff00 transparent">
+    @if (Model != null)
+    {
+       var mode= Model.Take(6).OrderByDescending(r=>r.PostReply);
+        foreach (var item in mode)
+        {
+            <div class="row text-center mb-1 mt-1">
+                <div class="col-2 text-left">
+                    @if (item.Customer.ImgUrl != null)
+                    {
+                        <img src="~/uploads/users/@item.Customer.ImgUrl"
+                             style=" width: 40px !important; height: 40px; border-radius: 50%;position:relative;bottom:5px" />
+                    }
+                    else
+                    {
+                        <img src="~/imgs/user.jpg"
+                             style=" width: 40px !important; height: 40px; border-radius: 50%;position:relative;bottom:5px" />
+                    }
+                    
+                    <strong style="font-size: 19px; font-weight: bold;">@item.Customer.UserName </strong>
+                </div>
+                <div class="col-9" style=" text-align: left">
+                    <strong>@item.PostBody</strong>
+                </div>
+                <div class="col-1">
+                    @if (GradProj.Controllers.PostController.emo == item.Customer.Email)
+                    {
+                        <i class="fas fa-tools"></i>
+                        <div style="
+                            background-color: gold;
+                            position: absolute;
+                            display: none;
+                            width: 120px;
+                        ">
+                            <a class="btn btn-link" onclick="" style="display:inline">Edit</a>
+                            <a class="btn btn-link ml-2" onclick=""  style="display:contents">Remove</a>
+                            </div>
+                    }
+                    @*else
+                    {
+                            <div class="main_div">
+                                <a class="btn btn-link reply" data-ajax="true" onclick="ReplyClick()">Reply</a>
+                            </div>
+                    }*@
+
+
+                </div>
+                        <form asp-action="Create" asp-controller="post" style="position: relative; left: 82%;">
+                            <div class="rply-form hidden">
+                                <div class="form-group">
+                                    <input asp-for="@item.PostReply" class="form-control" placeholder="Reply..." />
+                                </div>
+                                <input data-ajax="true" type="submit" value="Save" class="btn btn-light" />
+                            </div>
+                        </form>
+                    </div>
+            <hr />
+        }
+    }
+    @*<button type="button" name="bun" class="bun" value="false">Show More</button>*@
+</div>
+@*<script>
+    var divs = document.getElementsByClassName("rply-form");
+    var ReplyClick=function() {
+        for (var i = 0; i < divs.length; i++) {
+              divs[i].on("click", function () { divs[i].toggleClass('hidden'); })
+        }
+    }
+</script>*@

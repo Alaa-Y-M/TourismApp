@@ -1,0 +1,294 @@
+﻿@model IEnumerable<GradProj.Models.Hotel>
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<link href="~/css/admin.css" rel="stylesheet" />
+<link href="~/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-brand">
+                <a asp-action="Home" asp-controller="Admin">pro Alaa</a>
+                <div id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic">
+                    <img class="img-responsive img-rounded" src="~/imgs/user.jpg" alt="User picture">
+                </div>
+                <div class="user-info">
+                    <span class="user-name">
+                        <strong>Admin</strong>
+                    </span>
+                    <span class="user-role">Administrator</span>
+                    <span class="user-status">
+                        <i class="fa fa-circle"></i>
+                        <span>Online</span>
+                    </span>
+                </div>
+            </div>
+            <!-- sidebar-header  -->
+            <div class="sidebar-search">
+                <div>
+                    <div class="input-group">
+                        <input type="text" class="form-control search-menu" placeholder="Search...">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="header-menu">
+                        <span>General</span>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a style="cursor:pointer">
+                            <i class="fa fa-user-alt"></i>
+                            <span>Users</span>
+                            <span class="badge badge-pill badge-warning">New</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a asp-action="index" asp-controller="Role">
+                                        Authorization
+                                        <span class="badge badge-pill badge-success">Pro</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="index" asp-controller="User">User</a>
+                                </li>
+                                <li>
+                                    <a asp-action="index" asp-controller="UserRole">Users In Roles</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a style="cursor:pointer">
+                            <i class="fa fa-hotel"></i>
+                            <span>Hotels</span>
+                            <span class="badge badge-pill badge-danger">3</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a asp-action="index" asp-controller="hotel">
+                                        Hotels
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="index" asp-controller="Room">
+                                        Rooms
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a style="cursor:pointer">
+                            <i class="fa fa-place-of-worship"></i>
+                            <span>Places</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a asp-action="index" asp-controller="place">Places</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a style="cursor:pointer">
+                            <i class="fa fa-restroom"></i>
+                            <span>Restaurants</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a asp-action="index" asp-controller="restaurant">Restaurants</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a style="cursor:pointer">
+                            <i class="fa fa-city"></i>
+                            <span>Cities</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a asp-action="index" asp-controller="city">All Cities</a>
+                                </li>
+                                <li>
+                                    <a href="#">Line chart</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bar chart</a>
+                                </li>
+                                <li>
+                                    <a href="#">Histogram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a style="cursor:pointer">
+                            <i class="fa fa-fire"></i>
+                            <span>Festivals</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a asp-action="index" asp-controller="festival">Festivals</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a style="cursor:pointer">
+                            <i class="fa fa-cc-visa"></i>
+                            <span>Reservation</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li>
+                                    <a asp-action="index" asp-controller="booking">Bookings</a>
+                                </li>
+                                <li>
+                                    <a asp-action="index" asp-controller="customer">Customers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bar chart</a>
+                                </li>
+                                <li>
+                                    <a href="#">Histogram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="header-menu">
+                        <span>Extra</span>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i>
+                            <span>Documentation</span>
+                            <span class="badge badge-pill badge-primary">Beta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>Examples</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+        <!-- sidebar-content  -->
+        <div class="sidebar-footer">
+            <a href="#">
+                <i class="fa fa-bell"></i>
+                <span class="badge badge-pill badge-warning notification">3</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-envelope"></i>
+                <span class="badge badge-pill badge-success notification">7</span>
+            </a>
+            <a href="#">
+                <i class="fa fa-cog"></i>
+                <span class="badge-sonar"></span>
+            </a>
+            <a asp-action="index" asp-controller="home">
+                <i class="fa fa-power-off"></i>
+            </a>
+        </div>
+    </nav>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content">
+        <div class="container-fluid">
+            <div class="text-center" style="background-color:lightgray">
+                <h2 class="p-3">Admin Panel</h2>
+            </div>
+            <div class="text-center mb-3 " style="text-decoration:underline">
+                <h2 class="text-secondary p-3">Hotels Table</h2>
+            </div>
+            <div>
+                <p>
+                    <a asp-action="Create" asp-controller="hotel" class="btn btn-outline-primary mb-2">Create New</a>
+                </p>
+                <table class="table table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Details)
+                            </th>
+                            <th>City</th>
+                            <th>
+                                Image
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Details)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City.Name)
+                                </td>
+                                <td>
+                                    @if (item.ImgUrl != null)
+                                    {
+                                        <img src="~/uploads/hotel/@item.ImgUrl" class="img-thumbnail" style="width:45px" />
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-controller="hotel" asp-route-id="@item.Id" class="text-success mr-1" title="Edit"><i class="fa fa-edit fa-1x"></i></a> |
+                                    <a asp-action="Details" asp-controller="hotel" asp-route-id="@item.Id" class="text-warning mr-1 ml-1" title="Details"><i class="fa fa-info fa-1x"></i></a> |
+                                    <a asp-action="Delete" asp-controller="hotel" asp-route-id="@item.Id" class="text-danger ml-1"><i class="fa fa-remove fa-1x" title="Remove"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+    </main>
+<!-- page-content" -->
+
+ </div>
+<script src="~/jquery/jquery.min.js"></script>
+<script src="~/twitter-bootstrap/js/bootstrap.min.js"></script>
+<script src="~/js/admin.js"></script>

@@ -1,0 +1,75 @@
+﻿@model PagingList<GradProj.Models.ApplcationUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+
+    <div class="container">
+        <div class="text-center mt-4 mb-3" style="background-color:lightgray">
+            <h2 class="lead p-3">Users Table</h2>
+        </div>
+        <p>
+            <a asp-action="Create" class="btn btn-outline-primary  mb-4">Create New</a>
+        </p>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailConfirmed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th>User Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @if (item.ImgUrl != null)
+                            {
+                                <img src="~/uploads/users/@item.ImgUrl" class="img-fluid" width='60' />
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="text-success mr-2" title="Edit"><i class="fa fa-edit fa-1x"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger ml-2"><i class="fa fa-remove fa-1x" title="Remove"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="mt-3 mb-2">
+            <vc:pager paging-list="Model" />
+        </div>
+        <a asp-action="home" asp-controller="Admin">Back to Admin List</a>
+    </div>
+

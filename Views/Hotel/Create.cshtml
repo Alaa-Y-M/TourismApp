@@ -1,0 +1,54 @@
+﻿@model GradProj.ViewModels.HotelViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h3> Add New Hotel </h3>
+    @if (ViewBag.mssg != null)
+    {
+        <h3 class="alert alert-danger">@ViewBag.mssg</h3>
+    }<hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Details" class="control-label"></label>
+                    <input asp-for="Details" class="form-control" />
+                    <span asp-validation-for="Details" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cities" class="control-label"></label>
+                    <select asp-for="CityId" asp-items="@(new SelectList(Model.Cities,"Id","Name"))" class="form-control"></select>
+                    <span asp-validation-for="Cities" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Counter" class="control-label"></label>
+                    <input asp-for="Counter" type="number" class="form-control" />
+                    <span asp-validation-for="Counter" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="File" class="control-label"></label>
+                    <input asp-for="File" name="File" accept=".png,.jpeg,.jpg,.gif,.bmb" type="file" class="form-control form-control-file" />
+                    <span asp-validation-for="File" class="text-danger"></span>
+                </div>
+                <input asp-for="ImgUrl" type="hidden" class="form-control" />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+            <div class="mt-2 mb-1">
+                <a asp-action="index" class="btn btn-outline-warning"><i class="fas fa-backward fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+

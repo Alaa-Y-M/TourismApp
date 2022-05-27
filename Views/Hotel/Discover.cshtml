@@ -1,0 +1,90 @@
+﻿@model GradProj.Models.Hotel
+
+@{
+    ViewData["Title"] = "Disover Hotel";
+}
+<link href="~/css/site.css" rel="stylesheet">
+<link href="~/LayoutResources/css/style.css" rel="stylesheet">
+
+<div class="hero-wrap js-fullheight" style="background-image: url('/uploads/hotel/@Model.ImgUrl');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a asp-action="index" asp-controller="home">Home</a></span> <span>Hotel</span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:#fdfdfd">@Model.Name</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section justify-content-end ftco-search" style="margin-top: -122px;text-align: center;">
+    <div class="container-wrap ml-auto">
+        <div class="row no-gutters">
+            <div class="col-md-12 tab-wrap">
+
+                <div class="tab-content p-4 px-5" style="background: linear-gradient(180deg, #523c3beb 0%, #1b1b16ad 0%, #000000 100%);opacity: 0.6;" id="v-pills-tabContent">
+
+                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                        <div class="text-center">
+                            <h4 class="lead" style="margin-bottom: -12px; color: #ece7e77a">Our Rooms</h4>
+                            <h2 style="color:#fdfdfd">Choose Your Room</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section" style="margin-top:-30px">
+    <div class="container">
+        <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <span class="subheading">Our Rooms</span>
+                <h2 class="mb-4">Perfect Rooms</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Rooms)
+            {
+                <div class="col-md-6 col-lg-4 ftco-animate">
+                    <div class="project">
+                        <div class="img">
+                            @if (item.IsBusy)
+                            {
+                                <div class="vr"><span>Sale</span></div>
+                            }
+                            else
+                            {
+                                <div class="vr"><span style="background:#1ed01e">Free</span></div>
+                            }
+                            <img src="~/uploads/room/@item.ImgUrl" class="img-fluid" style="height:402px" alt="Colorlib Template">
+                        </div>
+                        <div class="text">
+                            <h4 class="price"><span class="mr-2">menu start at</span>$@item.Price</h4>
+                            <span>Egy, @item.Type</span><br />
+                            <span class="text-secondary"><strong>Room Number: </strong> @item.RoomNumber</span>
+                            <h3><a href="project.html">Number Of Beds: <strong>@item.NumberOfBeds</strong></a></h3>
+                            <div class="star d-flex clearfix">
+                                <div class="mr-auto float-left">
+                                    <span class="ion-ios-star"></span>
+                                    <span class="ion-ios-star"></span>
+                                    <span class="ion-ios-star"></span>
+                                    <span class="ion-ios-star"></span>
+                                    <span class="ion-ios-star"></span>
+                                </div>
+                                <div class="float-right">
+                                    <span class="rate"><a asp-action="bookingview" asp-route-Id="@item.Id"> Book Now</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="~/uploads/room/@item.ImgUrl" class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="icon-expand"></span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

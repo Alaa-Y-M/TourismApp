@@ -1,0 +1,44 @@
+﻿@*@model GradProj.Models.SiteModels.Booking
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<div class="container">
+    <div class="mt-5 mb-2">
+        <h4>Hotel</h4>
+        <hr />
+        <div class="row">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.user.UserName): </strong>
+                @Html.DisplayFor(i => i.user.UserName)
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.Hotel.Name): </strong>
+                @Html.DisplayFor(i => i.Hotel.Name)
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.CheckIn): </strong>
+                @Html.DisplayFor(i => i.CheckIn)
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-6">
+                <strong>@Html.DisplayNameFor(i => i.CheckOut): </strong>
+                @Html.DisplayFor(i => i.CheckOut)
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-success">Edit</a> |
+        <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+    </div>
+    <a asp-action="home" asp-controller="admin" class="btn btn-outline-warning mt-2">Go To Admin Panel</a>
+</div>*@
+

@@ -1,0 +1,130 @@
+﻿@model GradProj.ViewModels.BookingViewModel
+
+@{
+    ViewData["Title"] = "Reservation";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+    <style>
+    .lab{
+        font-size:20px;
+        color:#000;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }
+    .input {
+        height: 42px;
+        font-size: 18px;
+        color: #ff6a00;
+        background: #3330;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }
+        .input:focus {
+            background: #3333331c;
+            color: #007bff
+        }
+        .save {
+            position: relative;
+            left: 80%;
+            top: 40px;
+            cursor: pointer;
+        }
+        .save:hover{
+            color:#333 !important
+        }
+        @@media (min-width: 197px) {
+            .column {
+                width:400px !important;
+                left: 9% !important;
+                padding: 20px !important;
+            }
+            body {
+                background: url('/LayoutResources/images/hero_1.jpg') fixed center center !important
+            }
+
+        }
+        @@media (min-width: 374px) {
+            .column {
+                left: 9% !important;
+                margin-top: 40px;
+                width: 80% !important;
+                padding: 12px !important;
+            }
+        }
+
+        @@media (min-width: 411px) {
+            .column {
+                left: 14% !important;
+                width: 280px !important;
+                margin-top: 86px;
+            }
+        }
+        
+        @@media (min-width: 577px) {
+            .column {
+                 left:28% !important;
+                 padding:16px !important;
+            }
+        }
+  @@media (min-width: 768px) {
+        .column {
+            left: 15% !important;
+            padding: 20px !important;
+        } }
+    </style>
+    <body style="background: url('/LayoutResources/images/hero_1.jpg') fixed right top !important">
+        <div class="container">
+            @if (ViewBag.mssg != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show mt-3 mb-3 " role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>@ViewBag.mssg</strong>
+                </div>
+            }
+            @if (ViewBag.message != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show mt-3 mb-3" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>@ViewBag.message</strong>
+                </div>
+            }
+            <div class="">
+                <div class="row">
+                    <div class="col-md-5  column" style="position:relative;left:30% !important;padding:30px !important;background:#3333332e;border-radius:15px">
+                        <form asp-action="BookingView">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label lab"></label>
+                                <input asp-for="Email" type="email" class="form-control input" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CheckIn" class="control-label lab"></label>
+                                <input asp-for="CheckIn" type="date" class="form-control input" />
+                                <span asp-validation-for="CheckIn" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CheckOut" class="control-label lab"></label>
+                                <input asp-for="CheckOut" type="date" class="form-control input" />
+                                <span asp-validation-for="CheckOut" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="People" class="control-label lab"></label>
+                                <input asp-for="People" type="number" class="form-control input" />
+                                <span asp-validation-for="People" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-outline-light save" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+

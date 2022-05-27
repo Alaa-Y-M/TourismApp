@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logout</title>
+</head>
+<body>
+    <div class="container-fluid text-center mt-5">
+        <form asp-action="logout" asp-controller="account">
+           <p class="lead text-center text-danger p-3">You Gonna To Sign Out Of Our Site!!</p>
+        </form>
+        <input type="submit" class="btn btn-outline-dark mt-3" asp-route-accept="true" value="Ok" />
+    </div>
+</body>
+</html>

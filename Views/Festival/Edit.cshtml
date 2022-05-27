@@ -1,0 +1,67 @@
+﻿@model GradProj.ViewModels.FestivalViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+
+<div class="container mt-4">
+    <h3> Edit <strong>@Model.Name</strong> </h3>
+    @if (ViewBag.mssg != null)
+    {
+        <h3 class="alert alert-danger">@ViewBag.mssg</h3>
+    }<hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input disabled asp-for="Id" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Details" class="control-label"></label>
+                    <input asp-for="Details" class="form-control" />
+                    <span asp-validation-for="Details" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cities" class="control-label"></label>
+                    <select asp-for="CityId" asp-items="@(new SelectList(Model.Cities,"Id","Name"))" class="form-control"></select>
+                    <span asp-validation-for="Cities" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="File" class="control-label"></label>
+                    <input asp-for="File" name="File" accept=".png,.jpeg,.jpg,.gif,.bmb" type="file" onchange="FillImage(event)" class="form-control form-control-file" />
+                    <span asp-validation-for="File" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @{
+                        var img = GradProj.Controllers.HotelController.oldImg;
+                    }
+                    <img id="image" src=@Url.Content("~/uploads/festival/"+img) class="img-thumbnail" style="width:120px" />
+
+                </div>
+                <input asp-for="ImgUrl" type="hidden" value="@Model.ImgUrl" class="form-control" />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+            <div class="mt-2 mb-1">
+                <a asp-action="index" class="btn btn-outline-warning"><i class="fas fa-backward fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var FillImage = function (event) {
+        var img = document.getElementById("image");
+        img.src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

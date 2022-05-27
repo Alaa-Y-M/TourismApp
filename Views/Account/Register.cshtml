@@ -1,0 +1,129 @@
+﻿@model GradProj.ViewModels.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<div class="limiter">
+    <div class="container-login100 bg-img">
+        @if (!string.IsNullOrEmpty(GradProj.Controllers.AccountController.succmsg))
+        {
+            <div class="alert alert-success alert-dismissible fade show " role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>@GradProj.Controllers.AccountController.succmsg</strong>
+                <i class="fa fa-smile fa-1x"></i>
+            </div>
+        }
+        <div class="wrap-login100">
+            <form asp-action="Register" enctype="multipart/form-data" class="login100-form validate-form">
+                <span class="login100-form-logo logo" style="position:relative;overflow:hidden">
+                    @*<span class="cam"  style="background: #1b1e21bd; width: 100% !important; height: 42%; top: 70px;position:absolute;cursor:pointer">
+                        <i class="fa fa-camera cam" style="color: #ff6c00; position: absolute; top: 15px; font-size: 28px; left: 48px;" onclick="ClickFile(event)"></i>
+                    </span>
+                    <input hidden asp-for="File" name="File" class="file" type="file" accept=".png,.jpeg,.jpg,.gif,.bmb" onchange="FillImage(event)">*@
+                    <i class="zmdi zmdi-account-add ico"></i>
+                    <img src="" hidden id="image"  style="border-radius:50%;width:120px;height:120px" />
+                </span>
+
+                <span class="login100-form-title p-b-20 p-t-20">
+                    Register
+                </span>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input asp-for="Email" class="input100" type="email" name="email" placeholder="Email">
+                    <span class="focus-input100" data-placeholder="&#xf200;"></span>
+                    <span asp-validation-for="Email" class="text-warning"></span>
+                    @if (!string.IsNullOrEmpty(ViewBag.emailinValid))
+                    {
+                        <span class="text-warning">@ViewBag.emailinValid</span>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.emailExist))
+                    {
+                        <span class="text-warning">@ViewBag.emailExist</span>
+                    }
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    <input asp-for="UserName" class="input100" type="text" name="username" placeholder="Username">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    <span asp-validation-for="UserName" class="text-warning"></span>
+                    @if (!string.IsNullOrEmpty(ViewBag.userExists))
+                    {
+                        <span class="text-warning">@ViewBag.userExists</span>
+                    }
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <input asp-for="Password" class="input100" type="password" placeholder="Password">
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    <span asp-validation-for="Password" class="text-warning"></span>
+                </div>
+                <div class="wrap-input100">
+                    <input asp-for="Phone" asp- class="input100" type="text" placeholder="Phone Number">
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+                <div class="wrap-input100">
+                    <div class="row">
+                        <div class="col-6">
+                            <input asp-for="File" name="File" type="file" style="" accept=".png,.jpeg,.jpg,.gif,.bmb" onchange="FillImage(event)" />
+                        </div>
+                        @*<div class="col-6">
+                            <div>
+                                <img src="" hidden id="image" style="border-radius:50%;width:120px;height:120px" />
+                            </div>
+
+                        </div>*@
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <input type="submit" class="login100-form-btn" value="Register">
+                </div>
+
+                <div class="text-center p-t-25">
+                    <strong>I'm Member?</strong>
+                    <a class="txt1" href="~/Account/Login">
+                        Login Now
+                    </a>
+                </div>
+            </form>
+            <div>
+                <a asp-controller="home" asp-action="Index" style="color:aliceblue"><i class="zmdi zmdi-arrow-back"></i> Back To Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var FillImage = function (event) {
+        var img = document.getElementById("image");
+        img.src = URL.createObjectURL(event.target.files[0]);
+        if (img.src != null) {
+            $('#image').removeAttr('hidden');
+            $('.ico').hide();
+        }
+    }
+    //var ClickFile = function (event) {
+    //    $('.cam').on('click', function ()
+    //    {
+    //        $('.file').click();
+    //    });
+    //};
+    //var img = document.getElementById("image");
+    //img.onmouseenter = function () {
+    //    $('.cam').show();
+    //};
+    ////img.onmouseleave = function () {
+    ////    $('.cam').hide();
+    ////};
+
+    
+    
+
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}}
+
+

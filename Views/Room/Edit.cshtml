@@ -1,0 +1,83 @@
+﻿@model GradProj.ViewModels.RoomViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+
+<div class="container mt-4">
+    <h3> Edit Room Number: <strong>@(Model.RoomNumber??string.Empty)</strong> </h3>
+    @if (ViewBag.mssg != null)
+    {
+        <h3 class="alert alert-danger">@ViewBag.mssg</h3>
+    }<hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input hidden asp-for="Id" class="form-control" />
+                <div class="form-group">
+                    <label asp-for="RoomNumber" class="control-label"></label>
+                    <input asp-for="RoomNumber" class="form-control" />
+                    <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type" class="control-label"></label>
+                    <select asp-for="Type" class="form-control">
+                        <option disabled>-- Select Room Type --</option>
+                        <option>Single</option>
+                        <option>Double</option>
+                    </select>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IsBusy" class="control-label"></label>
+                    <input asp-for="IsBusy" type="checkbox" class="form-control" />
+                    <span asp-validation-for="IsBusy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumberOfBeds" class="control-label"></label>
+                    <input asp-for="NumberOfBeds" class="form-control" />
+                    <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="File" class="control-label"></label>
+                    <input asp-for="File" name="File" accept=".png,.jpeg,.jpg,.gif,.bmb" type="file" onchange="FillImage(event)" class="form-control form-control-file" />
+                    <span asp-validation-for="File" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hotels" class="control-label"></label>
+                    <select asp-for="HotelId" asp-items="@(new SelectList(Model.Hotels,"Id","Name"))" class="form-control"></select>
+                    <span asp-validation-for="Hotels" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    @{
+                        var img = GradProj.Controllers.HotelController.oldImg;
+                    }
+                    <img id="image" src=@Url.Content("~/uploads/destination/"+img) class="img-thumbnail" style="width:120px" />
+
+                </div>
+                <input asp-for="ImgUrl" type="hidden" value="@Model.ImgUrl" class="form-control" />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+            <div class="mt-2 mb-1">
+                <a asp-action="index" class="btn btn-outline-warning"><i class="fas fa-backward fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var FillImage = function (event) {
+        var img = document.getElementById("image");
+        img.src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

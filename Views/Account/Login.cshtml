@@ -1,0 +1,71 @@
+﻿@model GradProj.ViewModels.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+    <div class="limiter">
+        <div class="container-login100 bg-img">
+            <div class="wrap-login100">
+                @if (!string.IsNullOrEmpty(ViewBag.email))
+                {
+                    <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong>@ViewBag.email</strong>
+                    </div>
+                }
+                <form asp-action="Login" asp-controller="Account" class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <i class="zmdi zmdi-sign-in"></i>
+                    </span>
+
+                    <span class="login100-form-title p-b-20 p-t-20">
+                        Log in
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input asp-for="Email" class="input100" type="text" placeholder="Email">
+                        <span class="focus-input100 " data-placeholder="&#xf200;"></span>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input asp-for="Password" class="input100" type="password" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                        <span asp-validation-for="Password" class="text-warning"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input asp-for="RememberMe" class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <input type="submit" class="login100-form-btn" value="Login">
+                    </div>
+                    <div class="text-center p-t-15">
+                        <a class="txt1" asp-action="ResetPassword" asp-controller="account">
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <div class="text-center p-t-15">
+                        <strong>Not A Memmber?</strong>
+                        <a class="txt1" asp-action="Register" asp-controller="account">
+                            Create New Account
+                        </a>
+                    </div>
+                </form>
+                <div>
+                    <a asp-controller="home" asp-action="Index" style="color:aliceblue">Back to home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
